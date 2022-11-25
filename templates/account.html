@@ -1,0 +1,26 @@
+{%  extends "base.html" %}
+{{ super() }}
+{% block content %}
+    <main>
+        <div class="account-main-data">
+            <img src="https://cdn-icons-png.flaticon.com/512/929/929493.png?w=740&t=st=1669320924~exp=1669321524~hmac=2f112dcc4faa5aa4d4a998bbafdef295526295bd6106fd63cfa550a515559dc0" alt="">
+            <div class="account-main-data-data">
+                <p> Имя пользователя: {{ username }} </p>
+                <p> Дата регистрации: {{ date }}</p>
+                <p> Товаров в корзине: {{ count_items }}</p>
+                <p> Статус: {{ group }}</p>
+            </div>
+        </div>
+            <div class="account-bucket">
+                <h3>Корзина</h3>
+                {% for item in bucket %}
+                    <div class="account-bucket-item">
+                        <p> {{item.title}} </p>
+                        <p> {{item.description[0:200]}}...</p>
+                        <p> Цена: {{item.price}} </p>
+                        <p> Дата покупки: {{item.time[0:19]}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+    </main>
+{% endblock content %}

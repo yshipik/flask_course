@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% if title %}
+        <title> {{title}} </title>
+    {% else %}
+        <title> Пустой заголовок </title>
+    {% endif %}
+</head>
+<body>
+    {%- block main -%}
+        {%- block menu -%}
+        <header>
+            <h3 class="logo">Карандаш</h3>
+            <input type="checkbox" id="nav-clicker">
+            <label for="nav-clicker"></label>
+            <nav>
+                <ul>
+                    {%- for item in menu_data -%}
+                        {% if item.category == "all" or item.category == menu_category or
+                                (item.category == "unlogged" and not menu_category ) or
+                                (item.category == "user" and menu_category == "admin") %}
+                            <li><a href="{{item.url}}">{{item.title}}</a></li>
+                        {% endif %}
+                    {%- endfor -%}
+                </ul>
+            </nav>
+        </header>
+        {%- endblock menu -%}
+        {%- block content -%}
+        <main> <p> example </p></main>
+        {%- endblock content -%}
+        {%- block footer -%}
+        <footer>
+            <p>EULA | Copyright | Terms of Use | Privacy</p>
+            <p>@2022 SiteName is a trademark of company</p>
+        </footer>
+        {%- endblock footer -%}
+    {%- endblock main -%}
+
+</body>
+</html>

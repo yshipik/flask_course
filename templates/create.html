@@ -1,0 +1,17 @@
+{%  extends "base.html" %}
+{{ super() }}
+{% block content %}
+    <div class="login-form">
+        {% for category, message in get_flashed_messages(True) %}
+            <div class="flash {{ category }}"> {{ message }}</div>
+        {% endfor %}
+        <h3> Добавить товар </h3>
+        <form action="/create" method="post">
+            <input type="text" placeholder="Заголовок" name="title" required>
+            <textarea placeholder="Описание" name="description" cols="10" rows="10" required> </textarea>
+            <input type="text" placeholder="Ссылка на изображение" name="picture" required>
+            <input type="number" placeholder="Цена" name="price" required>
+            <input type="submit" value="Добавить товар">
+        </form>
+    </div>
+{% endblock content %}

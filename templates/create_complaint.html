@@ -1,0 +1,17 @@
+{%  extends "base.html" %}
+{{ super() }}
+{% block content %}
+<main>
+    <div class="login-form">
+        {% for category, message in get_flashed_messages(True) %}
+            <div class="flash {{ category }}"> {{ message }}</div>
+        {% endfor %}
+        <h3> Добавить жалобу </h3>
+        <form action="/complaints" method="post">
+            <input type="text" placeholder="Заголовок" name="title" required>
+            <textarea placeholder="Описание" name="content" cols="10" rows="10" required> </textarea>
+            <input type="submit" value="Добавить жалобу">
+        </form>
+    </div>
+</main>
+{% endblock content %}
