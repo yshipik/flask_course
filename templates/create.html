@@ -6,10 +6,10 @@
             <div class="flash {{ category }}"> {{ message }}</div>
         {% endfor %}
         <h3> Добавить товар </h3>
-        <form action="/create" method="post">
+        <form action="/create" method="post" enctype="multipart/form-data">
             <input type="text" placeholder="Заголовок" name="title" required>
             <textarea placeholder="Описание" name="description" cols="10" rows="10" required> </textarea>
-            <input type="text" placeholder="Ссылка на изображение" name="picture" required>
+            <input type="file"  placeholder="Изображение" name="file" required>
             <input type="number" placeholder="Цена" name="price" required>
             <input type="submit" value="Добавить товар">
         </form>

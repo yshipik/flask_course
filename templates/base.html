@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+     <link rel="icon" type="image/x-icon" href="/downloads/favicon.ico">
     {% if title %}
         <title> {{title}} </title>
     {% else %}
@@ -15,7 +16,9 @@
         <header>
             <h3 class="logo">Карандаш</h3>
             <input type="checkbox" id="nav-clicker">
-            <label for="nav-clicker"></label>
+            <label for="nav-clicker">
+                <p class=""> + </p>
+            </label>
             <nav>
                 <ul>
                     {%- for item in menu_data -%}

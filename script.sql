@@ -21,14 +21,23 @@ create table if not exists stuff (
     picture text not null
 );
 
+create table if not exists orders (
+    id int primary key,
+    timestamp date,
+    state text not null,
+    location text not null
+);
+
 create table if not exists purchases (
     id integer primary key autoincrement,
     time date not null,
     itemid int not null,
     userid int not null,
     state text not null,
+    orderid int,
     foreign key(itemid) references stuff(id),
-    foreign key(userid) references users(id)
+    foreign key(userid) references users(id),
+    foreign key(orderid) references orders(id)
 );
 create table if not exists complaints (
     id integer primary key autoincrement,

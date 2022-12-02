@@ -51,6 +51,7 @@ input[type=submit] {
 .flash {
     border: 1px solid var(--first-color);
     padding: 10px;
+    margin-bottom: 10px;
 }
 
 input[type=submit]:hover {
@@ -143,7 +144,7 @@ header input {
     flex-direction: column;
 }
 
-.thing *{
+.thing p, img, h3, form{
     margin-bottom: 20px;
 }
 .splash h3 {
@@ -212,18 +213,31 @@ header input {
     margin-bottom: 20px;
 }
 
+label p {
+    transition: transform 300ms;
+}
+
 @media screen and (max-width: 800px) {
     header {
-        z-index: 1;
         position: sticky;
         top: 0;
     }
     header label {
-        display: block;
-        content: '';
+        content: '+';
         padding: 10px;
-        background-image: url("../images/icon.png");
+        background-color: black;
+        color: white;
+        width: 64px;
+        height: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         user-select: none;
+    }
+    header label > p {
+        font-size: 48px;
+        text-align: center;
+        cursor: pointer;
     }
 
     nav{
@@ -264,6 +278,10 @@ header input {
 
     header input:checked ~ nav ul a {
         opacity: 1;
+    }
+    header input:checked ~ label p {
+        transform: rotate(45deg);
+        transition: transform 300ms;
     }
 
     .stock {

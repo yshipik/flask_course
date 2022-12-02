@@ -6,11 +6,11 @@
         {% for category, message in get_flashed_messages(True) %}
             <div class="flash {{ category }}"> {{ message }}</div>
         {% endfor %}
-        <h3> Добавить жалобу </h3>
+        <h3> Добавить отзыв </h3>
         <form action="/complaints" method="post">
             <input type="text" placeholder="Заголовок" name="title" required>
             <textarea placeholder="Описание" name="content" cols="10" rows="10" required> </textarea>
-            <input type="submit" value="Добавить жалобу">
+            <input type="submit" value="Добавить отзыв">
         </form>
     </div>
 </main>
