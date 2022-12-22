@@ -1,0 +1,42 @@
+{%  extends "base.html" %}
+{{ super() }}
+{% block content %}
+<main>
+    {% for category, message in get_flashed_messages(True) %}
+        <div class="flash {{ category }}"> {{ message }}</div>
+    {% endfor %}
+    <div class="page-orders-main">
+                {% set t = namespace(x=-1) %}
+                {% for item in orders %}
+                    {% set t1 = item.orderid %}
+                    {% if t1 != t.x %}
+                        <h2> Заказ №{{t1}} </h2>
+                        {% if item.status == "await" %}
+                            <h4> Статус: выполняется </h4>
+                        {% elif item.status == "working" %}
+                            <h4> Статус: на доработке </h4>
+                        {% elif item.status == "done" %}
+                            <h4> Статус: выполнен </h4>
+                            <h4> Заказ был выполнен: {{item.workstamp[0:19]}} </h4>
+                        {% endif %}
+                        <div class="area-buttons">
+                            <form action="/orders" method="post">
+                                <input type="number" name="id_confirm" value={{item.orderid}} hidden>
+                                <input type="submit" value="Выполнить">
+                            </form>
+                            <form action="/orders" method="post">
+                                <input type="number" name="id_cancel" value={{item.orderid}} hidden>
+                                <input type="submit" value="Отменить">
+                            </form>
+                        </div>
+                    {% endif %}
+                        <div class="account-bucket-item">
+                            <p> {{item.title}} </p>
+                            <p> {{item.description[0:200]}}...</p>
+                            <p> Цена: {{item.price}} </p>
+                            <p> Дата покупки: {{item.time[0:19]}}</p>
+                        </div>
+                {% set t.x = t1 %}
+                {% endfor %}
+</main>
+{% endblock content %}

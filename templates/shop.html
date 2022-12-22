@@ -8,7 +8,7 @@
     <div class="stock">
     {% for item in items %}
         <div class="thing">
-            <img src="{{url_for('get_file', filename=item.picture)}}" alt="">
+            <img src="{{url_for('get_image', filename=item.picture)}}" alt="">
             <h3> {{item.title}} </h3>
             <p> {{item.description}}</p>
             <p class="price"> Цена: <span>{{item.price}}</span></p>
